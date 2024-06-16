@@ -26,27 +26,10 @@ void bubblesort (vector<int> &arr){
 }
 
 
-void insertion(vector<int> &arr){
-    int mc = 1;
-    int sc = 0;
-    int sn = mc;
-    while (mc<arr.size()){
-
-        while (sc>=0){
-            if (arr[sn]<arr[sc]){
-                swap (arr[sn],arr[sc]);
-                sn =sc;
-            }
-            sc--;
-        }
-        mc++;
-    }
-}
-
 
 int main(){
     vector<int> arr ={1,4,2,60,2,9};
-    insertion(arr);
+    bubblesort(arr);
     for (auto it:arr){
         cout<<it<<endl;
     }
