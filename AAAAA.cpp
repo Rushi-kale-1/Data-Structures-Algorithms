@@ -1,53 +1,55 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void bubblesort (vector<int> &arr){
-    int n= arr.size();
-    int i=0;
-    int j=1;
-    int cnt =0;
-    while (cnt<=n-1){
-        if (arr[i]>arr[j]){
-            swap(arr[i],arr[j]);
-            i+=1;
-            j+=1;
-        } 
-        
-        else if (j>=n-1){
-            cnt+=1;
-            i=0;
-            j=1;
+void insertion (vector<int>&arr){
+    for (int i=0; i<arr.size();i++){
+        int j =i;
+        while (j>0 && arr[j-1]>arr[j]){
+            swap(arr[j-1],arr[j]);
+            j--;
         }
-        else {
-            i++;
-            j++;
+    }
+};
+void merge(vector<int>&arr, int low, int high, int mid){
+    int left = low;
+    int right = mid+1;
+    vector<int> temp;
+    while(left<=mid && right<=high){
+        if(arr[left]>arr[right]){
+            temp.push_back(arr[right]);
+            right++;
         }
+        else{
+            temp.push_back(arr[left]);
+            left++;
+        }
+    }
+    while (left<=mid){
+        temp.push_back(arr[left]);
+        left++;
+    }
+    while(right<=high){
+        temp.push_back(arr[right]);
+        right++;
+    }
+    for (int i =low; i<=high;i++){
+        arr[i]=temp[i-low];
     }
 }
 
-
-void insertion(vector<int> &arr){
-    int mc = 1;
-    int sc = 0;
-    int sn = mc;
-    while (mc<arr.size()){
-
-        while (sc>=0){
-            if (arr[sn]<arr[sc]){
-                swap (arr[sn],arr[sc]);
-                sn =sc;
-            }
-            sc--;
-        }
-        mc++;
+void mergesort(vector<int> &arr, int low, int high ){
+    if (low>=high){
+        return ;
     }
+    int mid = (low+high)/2;
+    mergesort(arr,low, mid);
+    mergesort(arr,mid+1, high);
+    merge(arr, low, high, mid);
 }
-
-
 int main(){
-    vector<int> arr ={1,4,2,60,2,9};
-    insertion(arr);
-    for (auto it:arr){
-        cout<<it<<endl;
+    vector<int> arr = {3,2,6,5,2,1,8,7,0,9};
+    mergesort(arr,0,arr.size()-1);
+    for (auto it: arr){
+        cout<<it<<" ";
     }
 }
