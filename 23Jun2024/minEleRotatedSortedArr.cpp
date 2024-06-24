@@ -13,14 +13,14 @@ public:
             mid =low +(high-low)/2;
             // left sorted
             if (nums[low]<=nums[mid]){
-                // if left part is sorted then nums[low] will be min from left part  
+                // if left part is sorted then nums[low] will be temp min from left part  
                 mini = min (mini, nums[low]);
                 // now shift right part
                 low = mid+1;
             }
             // Right sorted
             else {
-                // if right sorted then nums[mid] will be min from right part
+                // if right sorted then nums[mid] will be temp min from right part
                 mini = min (nums[mid],mini);
                 // now shift to left part
                 high = mid-1;
