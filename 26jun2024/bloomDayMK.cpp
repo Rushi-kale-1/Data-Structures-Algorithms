@@ -12,7 +12,7 @@ public:
                 }
             } else {
                 kcnt = 0;
-            }
+            }       
         }
         return cnt;
     }
@@ -28,7 +28,7 @@ public:
         while (low <= high) {
             mid = low + (high - low) / 2;
             if (function(mid, bloomDay, k) >= m) {
-                ans = mid;
+                ans = mid;      
                 high = mid - 1;
             } else {
                 low = mid + 1;
