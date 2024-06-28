@@ -1,3 +1,6 @@
+#include <bits/stdc++.h>
+using namespace std;
+
 class Solution {
 public:
    // to store frquency of each char in map
@@ -26,3 +29,7 @@ public:
         return ans;
     }
 };
+int main (){
+    Solution s1;
+    cout<<s1.frequencySort("jvjhjexrydiownemxaerkjirchgoedriueruioiesexrhjbjcrhhmcmh")<<endl;
+}

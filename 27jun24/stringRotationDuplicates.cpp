@@ -7,4 +7,4 @@ public:
         string concatenated = goal + goal;
         return concatenated.find(s) != string::npos;
     }
-};
+}; 
